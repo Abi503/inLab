@@ -1,42 +1,37 @@
-import re
 
-def check_password_validity():
-    # Get input from user
-    raw_input = input("Enter passwords separated by commas: ")
-    passwords = raw_input.split(",")
+def validate_passwords(input_string):
     
+    passwords = [p.strip() for p in input_string.split(",")]
     valid_passwords = []
 
-    for p in passwords:
-        # Strip whitespace just in case the user added spaces after commas
-        p = p.strip()
+    for pwd in passwords:
         
-        # Check length requirements
-        if len(p) < 6 or len(p) > 12:
+        if len(pwd) < 6 or len(pwd) > 12:
             continue
         
-        # Check for lowercase letter
-        if not re.search("[a-z]", p):
+        
+        if not re.search("[a-z]", pwd):
             continue
             
-        # Check for uppercase letter
-        if not re.search("[A-Z]", p):
+        
+        if not re.search("[A-Z]", pwd):
             continue
             
-        # Check for digits
-        if not re.search("[0-9]", p):
+       
+        if not re.search("[0-9]", pwd):
+            continue
+        
+        if not re.search("[$#@]", pwd):
             continue
             
-        # Check for special characters [$#@]
-        if not re.search("[$#@]", p):
-            continue
-            
-        # If all checks pass, add to valid list
-        valid_passwords.append(p)
+       
+        valid_passwords.append(pwd)
 
-    # Print the result as a comma-separated string
-    print(",".join(valid_passwords))
+    
+    return ",".join(valid_passwords)
 
-# Run the program
+
 if __name__ == "__main__":
-    check_password_validity()
+    raw_input = input("Enter passwords separated by commas: ")
+    result = validate_passwords(raw_input)
+    print(f"Valid Passwords: {result}")
