@@ -40,3 +40,5 @@ def check_password_validity():
 
 if __name__ == "__main__":
     check_password_validity()
+    #enter the code
+    
