@@ -1,6 +1,6 @@
 
 def validate_passwords(input_string):
-    
+ #enter comma separated value   
     passwords = [p.strip() for p in input_string.split(",")]
     valid_passwords = []
 
@@ -29,7 +29,6 @@ def validate_passwords(input_string):
 
     
     return ",".join(valid_passwords)
-
 
 if __name__ == "__main__":
     raw_input = input("Enter passwords separated by commas: ")
